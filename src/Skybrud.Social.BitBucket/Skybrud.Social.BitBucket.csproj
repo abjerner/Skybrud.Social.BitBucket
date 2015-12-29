@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F08EF425-99A0-4253-9A88-ECC4515975FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Skybrud.Social.BitBucket</RootNamespace>
+    <AssemblyName>Skybrud.Social.BitBucket</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Skybrud.Social">
+      <HintPath>..\..\..\Skybrud.Social\src\Skybrud.Social\bin\Release\Skybrud.Social.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitBucketService.cs" />
+    <Compile Include="Endpoints\BitBucketRepositoriesEndpoint.cs" />
+    <Compile Include="Endpoints\BitBucketUserEndpoint.cs" />
+    <Compile Include="Endpoints\BitBucketUsersEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\BitBucketRepositoriesRawEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\BitBucketUserRawEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\BitBucketUsersRawEndpoint.cs" />
+    <Compile Include="Exceptions\BitBucketException.cs" />
+    <Compile Include="OAuth\BitBucketOAuthClient.cs" />
+    <Compile Include="Objects\BitBucketAuthor.cs" />
+    <Compile Include="Objects\BitBucketAuthorUser.cs" />
+    <Compile Include="Objects\BitBucketChangeset.cs" />
+    <Compile Include="Objects\BitBucketCommit.cs" />
+    <Compile Include="Objects\BitBucketLink.cs" />
+    <Compile Include="Objects\BitBucketLinkCollection.cs" />
+    <Compile Include="Objects\BitBucketRepository.cs" />
+    <Compile Include="Objects\BitBucketRepositoryInfo.cs" />
+    <Compile Include="Objects\BitBucketUser.cs" />
+    <Compile Include="Objects\BitBucketUserRepository.cs" />
+    <Compile Include="Objects\Repositories\BitBucketCommitsCollection.cs" />
+    <Compile Include="Objects\Repositories\BitBucketRepositoriesCollection.cs" />
+    <Compile Include="Options\BitBucketCommitsOptions.cs" />
+    <Compile Include="Options\BitBucketRepositoriesOptions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfoGenerated.cs" />
+    <Compile Include="Responses\BitBucketChangesetsResponse.cs" />
+    <Compile Include="Responses\BitBucketResponse.cs" />
+    <Compile Include="Responses\Repositories\BitBucketCommitsResponse.cs" />
+    <Compile Include="Responses\Repositories\BitBucketRepositoriesResponse.cs" />
+    <Compile Include="Responses\Users\BitBucketUserResponse.cs" />
+    <Compile Include="Responses\Users\BitBucketUserResponseBody.cs" />
+    <Compile Include="Responses\User\BitBucketCurrentUserRepositoriesResponse.cs" />
+    <Compile Include="Responses\User\BitBucketCurrentUserResponse.cs" />
+    <Compile Include="Responses\User\BitBucketCurrentUserResponseBody.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)Skybrud.Social.PreBuildTool.exe" 2015-12-29 "$(ProjectPath)"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
