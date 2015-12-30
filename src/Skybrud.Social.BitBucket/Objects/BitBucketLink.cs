@@ -1,9 +1,10 @@
 using System.Collections.Generic;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
     
-    public class BitBucketLink : SocialJsonObject {
+    public class BitBucketLink : BitBucketObject {
 
         #region Properties
 
@@ -15,13 +16,13 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketLink(JsonObject obj) : base(obj) { }
+        private BitBucketLink(JObject obj) : base(obj) { }
 
         #endregion
 
         #region Static methods
 
-        public static Dictionary<string, BitBucketLink> ParseMultiple(JsonObject obj) {
+        public static Dictionary<string, BitBucketLink> ParseMultiple(JObject obj) {
 
             // Check if NULL
             if (obj == null) return null;
@@ -30,11 +31,11 @@ namespace Skybrud.Social.BitBucket.Objects {
             Dictionary<string, BitBucketLink> links = new Dictionary<string, BitBucketLink>();
 
             // Iterate through the specified object
-            foreach (string key in obj.Dictionary.Keys) {
-                JsonObject value = obj.GetObject(key);
+            foreach (JProperty property in obj.Properties()) {
+                JObject value = obj.GetObject(property.Name);
                 if (value == null) continue;
-                links.Add(key, new BitBucketLink(obj) {
-                    Name = key,
+                links.Add(property.Name, new BitBucketLink(obj) {
+                    Name = property.Name,
                     Href = value.GetString("href")
                 });
             }

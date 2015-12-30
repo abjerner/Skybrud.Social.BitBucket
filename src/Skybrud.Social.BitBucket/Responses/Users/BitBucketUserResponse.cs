@@ -22,7 +22,7 @@ namespace Skybrud.Social.BitBucket.Responses.Users {
 
             // Initialize the response object
             return new BitBucketUserResponse(response) {
-                Body = JsonObject.ParseJson(response.Body, BitBucketUserResponseBody.Parse)
+                Body = ParseJsonObject(response.Body, BitBucketUserResponseBody.Parse)
             };
 
         }

@@ -1,6 +1,6 @@
 ﻿using Skybrud.Social.BitBucket.Objects.Repositories;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json;
+using BitBucketCommitsCollection = Skybrud.Social.BitBucket.Objects.Repositories.BitBucketCommitsCollection;
 
 namespace Skybrud.Social.BitBucket.Responses.Repositories {
     
@@ -8,24 +8,22 @@ namespace Skybrud.Social.BitBucket.Responses.Repositories {
 
         #region Constructors
 
-        private BitBucketCommitsResponse(SocialHttpResponse response) : base(response) { }
+        private BitBucketCommitsResponse(SocialHttpResponse response) : base(response) {
+
+            // Validate the response
+            ValidateResponse(response);
+
+            // Parse the response body
+            Body = ParseJsonObject(response.Body, BitBucketCommitsCollection.Parse);
+
+        }
 
         #endregion
 
         #region Static methods
 
         public static BitBucketCommitsResponse ParseResponse(SocialHttpResponse response) {
-
-            if (response == null) return null;
-
-            // Validate the response
-            ValidateResponse(response);
-
-            // Initialize the response object
-            return new BitBucketCommitsResponse(response) {
-                Body = JsonObject.ParseJson(response.Body, BitBucketCommitsCollection.Parse)
-            };
-
+            return response == null ? null : new BitBucketCommitsResponse(response);
         }
 
         #endregion

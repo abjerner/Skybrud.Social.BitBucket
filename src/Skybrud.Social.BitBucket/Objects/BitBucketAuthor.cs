@@ -1,8 +1,9 @@
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
     
-    public class BitBucketAuthor : SocialJsonObject {
+    public class BitBucketAuthor : BitBucketObject {
 
         #region Properties
 
@@ -14,23 +15,17 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketAuthor(JsonObject obj) : base(obj) { }
+        private BitBucketAuthor(JObject obj) : base(obj) {
+            Raw = obj.GetString("raw");
+            User = obj.GetObject("user", BitBucketAuthorUser.Parse);
+        }
 
         #endregion
 
         #region Static methods
 
-        public static BitBucketAuthor Parse(JsonObject obj) {
-
-            // Check if NULL
-            if (obj == null) return null;
-
-            // Initialize the author object
-            return new BitBucketAuthor(obj) {
-                Raw = obj.GetString("raw"),
-                User = obj.GetObject("user", BitBucketAuthorUser.Parse)
-            };
-
+        public static BitBucketAuthor Parse(JObject obj) {
+            return obj == null ? null : new BitBucketAuthor(obj);
         }
 
         #endregion

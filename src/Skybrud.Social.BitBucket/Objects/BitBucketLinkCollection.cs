@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
-    public class BitBucketLinkCollection : SocialJsonObject {
+    public class BitBucketLinkCollection : BitBucketObject {
 
         #region Private fields
 
-        private Dictionary<string, BitBucketLink> _links;
+        private readonly Dictionary<string, BitBucketLink> _links;
 
         #endregion
 
@@ -22,7 +22,9 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketLinkCollection(JsonObject obj) : base(obj) { }
+        private BitBucketLinkCollection(JObject obj) : base(obj) {
+            _links = BitBucketLink.ParseMultiple(obj);
+        }
 
         #endregion
 
@@ -41,11 +43,8 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Static methods
 
-        public static BitBucketLinkCollection Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketLinkCollection(obj) {
-                _links = BitBucketLink.ParseMultiple(obj)
-            };
+        public static BitBucketLinkCollection Parse(JObject obj) {
+            return obj == null ? null : new BitBucketLinkCollection(obj);
         }
 
         #endregion

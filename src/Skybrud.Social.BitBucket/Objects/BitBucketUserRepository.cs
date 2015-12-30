@@ -1,9 +1,10 @@
 ﻿using System;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
-    
-    public class BitBucketUserRepository : SocialJsonObject {
+
+    public class BitBucketUserRepository : BitBucketObject {
 
         #region Properties
 
@@ -38,38 +39,37 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketUserRepository(JsonObject obj) : base(obj) { }
+        private BitBucketUserRepository(JObject obj) : base(obj) {
+            Type = obj.GetString("scm");
+            HasWiki = obj.GetBoolean("has_wiki");
+            NoForks = obj.GetBoolean("no_forks");
+            Owner = obj.GetString("owner");
+            Logo = obj.GetString("logo");
+            Size = obj.GetInt64("size");
+            IsReadOnly = obj.GetBoolean("read_only");
+            CreatedOn = obj.GetDateTime("utc_created_on");
+            Website = obj.GetString("website");
+            Description = obj.GetString("description");
+            HasIssues = obj.GetBoolean("has_issues");
+            IsFork = obj.GetBoolean("is_fork");
+            Slug = obj.GetString("slug");
+            IsPrivate = obj.GetBoolean("is_private");
+            Name = obj.GetString("name");
+            Language = obj.GetString("language");
+            LastUpdated = obj.GetDateTime("utc_last_updated");
+            Creator = obj.GetString("creator");
+        }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <code>BitBucketUserRepository</code> from the specified <code>JsonObject</code>.
+        /// Gets an instance of <code>BitBucketUserRepository</code> from the specified <code>JObject</code>.
         /// </summary>
-        /// <param name="obj">The instance of <code>JsonObject</code> to parse.</param>
-        public static BitBucketUserRepository Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketUserRepository(obj) {
-                Type = obj.GetString("scm"),
-                HasWiki = obj.GetBoolean("has_wiki"),
-                NoForks = obj.GetBoolean("no_forks"),
-                Owner = obj.GetString("owner"),
-                Logo = obj.GetString("logo"),
-                Size = obj.GetInt64("size"),
-                IsReadOnly = obj.GetBoolean("read_only"),
-                CreatedOn = obj.GetDateTime("utc_created_on"),
-                Website = obj.GetString("website"),
-                Description = obj.GetString("description"),
-                HasIssues = obj.GetBoolean("has_issues"),
-                IsFork = obj.GetBoolean("is_fork"),
-                Slug = obj.GetString("slug"),
-                IsPrivate = obj.GetBoolean("is_private"),
-                Name = obj.GetString("name"),
-                Language = obj.GetString("language"),
-                LastUpdated = obj.GetDateTime("utc_last_updated"),
-                Creator = obj.GetString("creator")
-            };
+        /// <param name="obj">The instance of <code>JObject</code> to parse.</param>
+        public static BitBucketUserRepository Parse(JObject obj) {
+            return obj == null ? null : new BitBucketUserRepository(obj);
         }
 
         #endregion

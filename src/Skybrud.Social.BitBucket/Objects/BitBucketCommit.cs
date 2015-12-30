@@ -1,9 +1,10 @@
 using System;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
-    public class BitBucketCommit : SocialJsonObject {
+    public class BitBucketCommit : BitBucketObject {
 
         #region Properties
 
@@ -41,27 +42,26 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketCommit(JsonObject obj) : base(obj) { } 
+        private BitBucketCommit(JObject obj) : base(obj) {
+            Hash = obj.GetString("hash");
+            Date = obj.GetDateTime("date");
+            Message = obj.GetString("message");
+            Repository = obj.GetObject("repository", BitBucketRepositoryInfo.Parse);
+            Author = obj.GetObject("author", BitBucketAuthor.Parse);
+            Links = obj.GetObject("links", BitBucketLinkCollection.Parse);
+        } 
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>JsonObject</code> and returns an instance of <code>BitBucketCommit</code> if
+        /// Parses the specified <code>JObject</code> and returns an instance of <code>BitBucketCommit</code> if
         /// successful.
         /// </summary>
-        /// <param name="obj">The <code>JsonObject</code> representing the user.</param>
-        public static BitBucketCommit Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketCommit(obj) {
-                Hash = obj.GetString("hash"),
-                Date = DateTime.Parse(obj.GetString("date")),
-                Message = obj.GetString("message"),
-                Repository = obj.GetObject("repository", BitBucketRepositoryInfo.Parse),
-                Author = obj.GetObject("author", BitBucketAuthor.Parse),
-                Links = obj.GetObject("links", BitBucketLinkCollection.Parse)
-            };
+        /// <param name="obj">The <code>JObject</code> representing the user.</param>
+        public static BitBucketCommit Parse(JObject obj) {
+            return obj == null ? null : new BitBucketCommit(obj);
         }
 
         #endregion

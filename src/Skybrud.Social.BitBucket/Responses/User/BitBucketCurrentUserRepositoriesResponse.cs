@@ -1,6 +1,5 @@
 ﻿using Skybrud.Social.BitBucket.Objects;
 using Skybrud.Social.Http;
-using Skybrud.Social.Json;
 
 namespace Skybrud.Social.BitBucket.Responses.User {
 
@@ -8,24 +7,22 @@ namespace Skybrud.Social.BitBucket.Responses.User {
 
         #region Constructors
 
-        private BitBucketCurrentUserRepositoriesResponse(SocialHttpResponse response) : base(response) { }
+        private BitBucketCurrentUserRepositoriesResponse(SocialHttpResponse response) : base(response) {
+
+            // Validate the response
+            ValidateResponse(response);
+
+            // Parse the response body
+            Body = ParseJsonArray(response.Body, BitBucketUserRepository.Parse);
+
+        }
 
         #endregion
 
         #region Static methods
 
         public static BitBucketCurrentUserRepositoriesResponse ParseResponse(SocialHttpResponse response) {
-
-            if (response == null) return null;
-
-            // Validate the response
-            ValidateResponse(response);
-
-            // Initialize the response object
-            return new BitBucketCurrentUserRepositoriesResponse(response) {
-                Body = JsonArray.ParseJson(response.Body).ParseMultiple(BitBucketUserRepository.Parse)
-            };
-
+            return response == null ? null : new BitBucketCurrentUserRepositoriesResponse(response);
         }
 
         #endregion

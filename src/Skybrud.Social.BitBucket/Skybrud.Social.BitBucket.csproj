@@ -61,10 +61,12 @@
     <Compile Include="Objects\BitBucketCommit.cs" />
     <Compile Include="Objects\BitBucketLink.cs" />
     <Compile Include="Objects\BitBucketLinkCollection.cs" />
+    <Compile Include="Objects\BitBucketObject.cs" />
     <Compile Include="Objects\BitBucketRepository.cs" />
     <Compile Include="Objects\BitBucketRepositoryInfo.cs" />
     <Compile Include="Objects\BitBucketUser.cs" />
     <Compile Include="Objects\BitBucketUserRepository.cs" />
+    <Compile Include="Objects\Changesets\BitBucketChangesetsCollection.cs" />
     <Compile Include="Objects\Repositories\BitBucketCommitsCollection.cs" />
     <Compile Include="Objects\Repositories\BitBucketRepositoriesCollection.cs" />
     <Compile Include="Options\BitBucketCommitsOptions.cs" />

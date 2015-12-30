@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using Skybrud.Social.BitBucket.Endpoints.Raw;
 using Skybrud.Social.BitBucket.Objects;
 using Skybrud.Social.BitBucket.Options;
@@ -52,13 +53,7 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         /// specified node and includes the older requests that preceded it. The Bitbucket GUI lists the nodes on the
         /// <b>Commit</b> tab. The default <code>start</code> value is the tip.</param>
         public BitBucketChangesetsResponse GetChangesets(string accountName, string repoSlug, int limit = 0, string start = null) {
-
-            // Get the raw data from the API
-            string contents = Raw.GetChangesets(accountName, repoSlug, limit, start).Body;
-
-            // Parse the JSON
-            return JsonObject.ParseJson(contents, BitBucketChangesetsResponse.Parse);
-        
+            return BitBucketChangesetsResponse.ParseResponse(Raw.GetChangesets(accountName, repoSlug, limit, start));
         }
 
         /// <summary>
@@ -97,7 +92,7 @@ namespace Skybrud.Social.BitBucket.Endpoints {
             string contents = Raw.GetCommit(accountName, repoSlug, revision).Body;
 
             // Parse the JSON
-            return JsonObject.ParseJson(contents, BitBucketCommit.Parse);
+            return SocialUtils.ParseJsonObject(contents, BitBucketCommit.Parse);
 
         }
 

@@ -1,9 +1,10 @@
 using System;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
-    
-    public class BitBucketChangeset : SocialJsonObject {
+
+    public class BitBucketChangeset : BitBucketObject {
 
         #region Properties
 
@@ -41,22 +42,21 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketChangeset(JsonObject obj) : base(obj) { }
+        private BitBucketChangeset(JObject obj) : base(obj) {
+            Node = obj.GetString("node");
+            RawAuthor = obj.GetString("raw_author");
+            Timestamp = DateTime.Parse(obj.GetString("utctimestamp"));
+            Author = obj.GetString("author");
+            RawNode = obj.GetString("raw_node");
+            Message = obj.GetString("message");
+        }
 
         #endregion
 
         #region Static methods
 
-        public static BitBucketChangeset Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketChangeset(obj) {
-                Node = obj.GetString("node"),
-                RawAuthor = obj.GetString("raw_author"),
-                Timestamp = DateTime.Parse(obj.GetString("utctimestamp")),
-                Author = obj.GetString("author"),
-                RawNode = obj.GetString("raw_node"),
-                Message = obj.GetString("message")
-            };
+        public static BitBucketChangeset Parse(JObject obj) {
+            return obj == null ? null : new BitBucketChangeset(obj);
         }
 
         #endregion

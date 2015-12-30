@@ -1,9 +1,10 @@
 ﻿using System;
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
-    public class BitBucketRepository : SocialJsonObject {
+    public class BitBucketRepository : BitBucketObject {
 
         #region Properties
 
@@ -35,28 +36,27 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketRepository(JsonObject obj) : base(obj) { }
+        private BitBucketRepository(JObject obj) : base(obj) {
+            Scm = obj.GetString("scm");
+            HasWiki = obj.GetBoolean("has_wiki");
+            Description = obj.GetString("description");
+            Name = obj.GetString("name");
+            Language = obj.GetString("language");
+            CreatedOn = obj.GetDateTime("created_on");
+            FullName = obj.GetString("full_name");
+            HasIssues = obj.GetBoolean("has_issues");
+            UpdatedOn = obj.GetDateTime("updated_on");
+            Size = obj.GetInt64("size");
+            IsPrivate = obj.GetBoolean("is_private");
+            Uuid = obj.GetString("uuid");
+        }
 
         #endregion
 
         #region Static methods
 
-        public static BitBucketRepository Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketRepository(obj) {
-                Scm = obj.GetString("scm"),
-                HasWiki = obj.GetBoolean("has_wiki"),
-                Description = obj.GetString("description"),
-                Name = obj.GetString("name"),
-                Language = obj.GetString("language"),
-                CreatedOn = obj.GetDateTime("created_on"),
-                FullName = obj.GetString("full_name"),
-                HasIssues = obj.GetBoolean("has_issues"),
-                UpdatedOn = obj.GetDateTime("updated_on"),
-                Size = obj.GetInt64("size"),
-                IsPrivate = obj.GetBoolean("is_private"),
-                Uuid = obj.GetString("uuid")
-            };
+        public static BitBucketRepository Parse(JObject obj) {
+            return obj == null ? null : new BitBucketRepository(obj);
         }
 
         #endregion

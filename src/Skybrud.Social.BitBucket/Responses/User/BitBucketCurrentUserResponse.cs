@@ -7,24 +7,22 @@ namespace Skybrud.Social.BitBucket.Responses.User {
 
         #region Constructors
 
-        private BitBucketCurrentUserResponse(SocialHttpResponse response) : base(response) { }
+        private BitBucketCurrentUserResponse(SocialHttpResponse response) : base(response) {
+
+            // Validate the response
+            ValidateResponse(response);
+
+            // Parse the response body
+            Body = ParseJsonObject(response.Body, BitBucketCurrentUserResponseBody.Parse);
+        
+        }
 
         #endregion
 
         #region Static methods
 
         public static BitBucketCurrentUserResponse ParseResponse(SocialHttpResponse response) {
-
-            if (response == null) return null;
-
-            // Validate the response
-            ValidateResponse(response);
-
-            // Initialize the response object
-            return new BitBucketCurrentUserResponse(response) {
-                Body = JsonObject.ParseJson(response.Body, BitBucketCurrentUserResponseBody.Parse)
-            };
-
+            return response == null ? null : new BitBucketCurrentUserResponse(response);
         }
 
         #endregion

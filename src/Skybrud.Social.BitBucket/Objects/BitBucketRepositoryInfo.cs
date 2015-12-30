@@ -1,8 +1,9 @@
-using Skybrud.Social.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
-    public class BitBucketRepositoryInfo : SocialJsonObject {
+    public class BitBucketRepositoryInfo : BitBucketObject {
 
         #region Properties
 
@@ -34,18 +35,17 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketRepositoryInfo(JsonObject obj) : base(obj) { }
+        private BitBucketRepositoryInfo(JObject obj) : base(obj) {
+            FullName = obj.GetString("full_name");
+            Links = obj.GetObject("links", BitBucketLinkCollection.Parse);
+        }
 
         #endregion
 
         #region Static methods
 
-        public static BitBucketRepositoryInfo Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketRepositoryInfo(obj) {
-                FullName = obj.GetString("full_name"),
-                Links = obj.GetObject("links", BitBucketLinkCollection.Parse)
-            };
+        public static BitBucketRepositoryInfo Parse(JObject obj) {
+            return obj == null ? null : new BitBucketRepositoryInfo(obj);
         }
 
         #endregion

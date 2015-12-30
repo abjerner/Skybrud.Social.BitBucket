@@ -1,12 +1,14 @@
 using System.IO;
+using Newtonsoft.Json.Linq;
 using Skybrud.Social.Json;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
     /// <summary>
     /// Class describing a BitBucket user.
     /// </summary>
-    public class BitBucketUser : SocialJsonObject {
+    public class BitBucketUser : BitBucketObject {
 
         #region Properties
 
@@ -49,27 +51,26 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketUser(JsonObject obj) : base(obj) { }
+        private BitBucketUser(JObject obj) : base(obj) {
+            Username = obj.GetString("username");
+            FirstName = obj.GetString("first_name");
+            LastName = obj.GetString("last_name");
+            DisplayName = obj.GetString("display_name");
+            IsTeam = obj.GetBoolean("is_team");
+            Avatar = obj.GetString("avatar");
+            ResourceUri = obj.GetString("resource_uri");
+        }
 
         #endregion
 
         #region Static methods
 
         /// <summary>
-        /// Gets a user from the specified <code>JsonObject</code>.
+        /// Gets a user from the specified <code>JObject</code>.
         /// </summary>
         /// <param name="obj">The object to parse.</param>
-        public static BitBucketUser Parse(JsonObject obj) {
-            if (obj == null) return null;
-            return new BitBucketUser(obj) {
-                Username = obj.GetString("username"),
-                FirstName = obj.GetString("first_name"),
-                LastName = obj.GetString("last_name"),
-                DisplayName = obj.GetString("display_name"),
-                IsTeam = obj.GetBoolean("is_team"),
-                Avatar = obj.GetString("avatar"),
-                ResourceUri = obj.GetString("resource_uri")
-            };
+        public static BitBucketUser Parse(JObject obj) {
+            return obj == null ? null : new BitBucketUser(obj);
         }
 
         #endregion

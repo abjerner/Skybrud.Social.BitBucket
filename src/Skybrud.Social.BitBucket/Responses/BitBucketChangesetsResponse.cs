@@ -1,9 +1,11 @@
+using Newtonsoft.Json.Linq;
 using Skybrud.Social.BitBucket.Objects;
-using Skybrud.Social.Json;
+using Skybrud.Social.BitBucket.Objects.Changesets;
+using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Responses {
-    
-    public class BitBucketChangesetsResponse {
+
+    public class BitBucketChangesetsResponse : BitBucketResponse<BitBucketChangesetsCollection> {
 
         #region Properties
 
@@ -11,21 +13,23 @@ namespace Skybrud.Social.BitBucket.Responses {
 
         #endregion
 
-        #region Constructor
+        #region Constructors
 
-        internal BitBucketChangesetsResponse() {
-            // Hide default constructor
+        private BitBucketChangesetsResponse(SocialHttpResponse response) : base(response) {
+            Body = ParseJsonObject(response.Body, BitBucketChangesetsCollection.Parse);
         }
 
         #endregion
 
         #region Methods
-        
-        public static BitBucketChangesetsResponse Parse(JsonObject obj) {
-            return new BitBucketChangesetsResponse {
-                Changesets = obj.GetArray("changesets", BitBucketChangeset.Parse)
-            };
+
+        #region Static methods
+
+        public static BitBucketChangesetsResponse ParseResponse(SocialHttpResponse response) {
+            return response == null ? null : new BitBucketChangesetsResponse(response);
         }
+
+        #endregion
 
         #endregion
 

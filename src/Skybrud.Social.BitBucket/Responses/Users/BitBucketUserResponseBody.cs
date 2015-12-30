@@ -1,9 +1,11 @@
-﻿using Skybrud.Social.BitBucket.Objects;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Social.BitBucket.Objects;
 using Skybrud.Social.Json;
+using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Responses.Users {
 
-    public class BitBucketUserResponseBody : SocialJsonObject {
+    public class BitBucketUserResponseBody : BitBucketObject {
 
         #region Properties
 
@@ -21,13 +23,13 @@ namespace Skybrud.Social.BitBucket.Responses.Users {
 
         #region Constructor
 
-        private BitBucketUserResponseBody(JsonObject obj) : base(obj) { }
+        private BitBucketUserResponseBody(JObject obj) : base(obj) { }
 
         #endregion
 
         #region Static methods
 
-        public static BitBucketUserResponseBody Parse(JsonObject obj) {
+        public static BitBucketUserResponseBody Parse(JObject obj) {
             if (obj == null) return null;
             return new BitBucketUserResponseBody(obj) {
                 User = obj.GetObject("user", BitBucketUser.Parse),
