@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Social.BitBucket.Objects;
+using Skybrud.Social.BitBucket.Objects.Users;
 using Skybrud.Social.Json.Extensions.JObject;
 
 namespace Skybrud.Social.BitBucket.Responses.User {

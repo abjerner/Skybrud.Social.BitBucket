@@ -65,7 +65,7 @@
     <Compile Include="Objects\BitBucketObject.cs" />
     <Compile Include="Objects\BitBucketRepository.cs" />
     <Compile Include="Objects\BitBucketRepositoryInfo.cs" />
-    <Compile Include="Objects\BitBucketUser.cs" />
+    <Compile Include="Objects\Users\BitBucketUser.cs" />
     <Compile Include="Objects\BitBucketUserRepository.cs" />
     <Compile Include="Objects\Changesets\BitBucketChangesetsCollection.cs" />
     <Compile Include="Objects\Repositories\BitBucketCommitsCollection.cs" />
@@ -78,8 +78,8 @@
     <Compile Include="Responses\BitBucketResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketCommitsResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketRepositoriesResponse.cs" />
-    <Compile Include="Responses\Users\BitBucketUserResponse.cs" />
-    <Compile Include="Responses\Users\BitBucketUserResponseBody.cs" />
+    <Compile Include="Responses\Users\BitBucketGetUserResponse.cs" />
+    <Compile Include="Objects\Users\BitBucketUserResponseBody.cs" />
     <Compile Include="Responses\User\BitBucketCurrentUserRepositoriesResponse.cs" />
     <Compile Include="Responses\User\BitBucketCurrentUserResponse.cs" />
     <Compile Include="Responses\User\BitBucketCurrentUserResponseBody.cs" />

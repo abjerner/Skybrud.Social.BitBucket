@@ -1,9 +1,7 @@
-using System.IO;
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json;
 using Skybrud.Social.Json.Extensions.JObject;
 
-namespace Skybrud.Social.BitBucket.Objects {
+namespace Skybrud.Social.BitBucket.Objects.Users {
 
     /// <summary>
     /// Class describing a BitBucket user.
@@ -66,9 +64,10 @@ namespace Skybrud.Social.BitBucket.Objects {
         #region Static methods
 
         /// <summary>
-        /// Gets a user from the specified <code>JObject</code>.
+        /// Parses the specified <code>obj</code> into an instance of <see cref="BitBucketUser"/>.
         /// </summary>
-        /// <param name="obj">The object to parse.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="BitBucketUser"/>.</returns>
         public static BitBucketUser Parse(JObject obj) {
             return obj == null ? null : new BitBucketUser(obj);
         }

@@ -35,8 +35,8 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         /// Gets information about the user with the specified <code>username</code>.
         /// </summary>
         /// <param name="username">The username of the user.</param>
-        public BitBucketUserResponse GetInfo(string username) {
-            return BitBucketUserResponse.ParseResponse(Raw.GetInfo(username));
+        public BitBucketGetUserResponse GetInfo(string username) {
+            return BitBucketGetUserResponse.ParseResponse(Raw.GetInfo(username));
         }
 
         #endregion
