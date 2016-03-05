@@ -66,10 +66,10 @@
     <Compile Include="Objects\BitBucketRepository.cs" />
     <Compile Include="Objects\BitBucketRepositoryInfo.cs" />
     <Compile Include="Objects\Users\BitBucketUser.cs" />
-    <Compile Include="Objects\BitBucketUserRepository.cs" />
     <Compile Include="Objects\Changesets\BitBucketChangesetsCollection.cs" />
     <Compile Include="Objects\Repositories\BitBucketCommitsCollection.cs" />
     <Compile Include="Objects\Repositories\BitBucketRepositoriesCollection.cs" />
+    <Compile Include="Objects\Users\BitBucketUserLinkCollection.cs" />
     <Compile Include="Options\BitBucketCommitsOptions.cs" />
     <Compile Include="Options\BitBucketRepositoriesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,10 +79,6 @@
     <Compile Include="Responses\Repositories\BitBucketCommitsResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketRepositoriesResponse.cs" />
     <Compile Include="Responses\Users\BitBucketGetUserResponse.cs" />
-    <Compile Include="Objects\Users\BitBucketUserResponseBody.cs" />
-    <Compile Include="Responses\User\BitBucketCurrentUserRepositoriesResponse.cs" />
-    <Compile Include="Responses\User\BitBucketCurrentUserResponse.cs" />
-    <Compile Include="Responses\User\BitBucketCurrentUserResponseBody.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

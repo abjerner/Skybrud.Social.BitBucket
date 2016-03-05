@@ -16,7 +16,10 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketLink(JObject obj) : base(obj) { }
+        private BitBucketLink(JObject obj) : base(obj) {
+            Name = ((JProperty) obj.Parent).Name;
+            Href = obj.GetString("href");
+        }
 
         #endregion
 
@@ -43,6 +46,15 @@ namespace Skybrud.Social.BitBucket.Objects {
             // Return the dictionary
             return links;
 
+        }
+
+        /// <summary>
+        /// Parses the specified <code>obj</code> into an instance of <see cref="BitBucketLink"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="BitBucketLink"/>.</returns>
+        public static BitBucketLink Parse(JObject obj) {
+            return obj == null ? null : new BitBucketLink(obj);
         }
 
         #endregion

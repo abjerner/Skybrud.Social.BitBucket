@@ -4,7 +4,10 @@ using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Responses.Users {
 
-    public class BitBucketGetUserResponse : BitBucketResponse<BitBucketUserResponseBody> {
+    /// <summary>
+    /// Class representing the response of a call to get information about a given user.
+    /// </summary>
+    public class BitBucketGetUserResponse : BitBucketResponse<BitBucketUser> {
 
         #region Constructor
 
@@ -14,7 +17,7 @@ namespace Skybrud.Social.BitBucket.Responses.Users {
             ValidateResponse(response);
 
             // Parse the response body
-            Body = ParseJsonObject(response.Body, BitBucketUserResponseBody.Parse);
+            Body = ParseJsonObject(response.Body, BitBucketUser.Parse);
 
         }
 
@@ -22,6 +25,11 @@ namespace Skybrud.Social.BitBucket.Responses.Users {
 
         #region Static methods
 
+        /// <summary>
+        /// Parses the specified <code>response</code> into an instance of <see cref="BitBucketGetUserResponse"/>.
+        /// </summary>
+        /// <param name="response">The response to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="BitBucketGetUserResponse"/>.</returns>
         public static BitBucketGetUserResponse ParseResponse(SocialHttpResponse response) {
 
             // Some input validation

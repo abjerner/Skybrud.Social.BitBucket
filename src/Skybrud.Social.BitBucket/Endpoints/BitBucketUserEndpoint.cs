@@ -1,5 +1,5 @@
 using Skybrud.Social.BitBucket.Endpoints.Raw;
-using Skybrud.Social.BitBucket.Responses.User;
+using Skybrud.Social.BitBucket.Responses.Users;
 
 namespace Skybrud.Social.BitBucket.Endpoints {
     
@@ -34,16 +34,16 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
-        public BitBucketCurrentUserResponse GetInfo() {
-            return BitBucketCurrentUserResponse.ParseResponse(Raw.GetInfo());
+        public BitBucketGetUserResponse GetInfo() {
+            return BitBucketGetUserResponse.ParseResponse(Raw.GetInfo());
         }
 
-        /// <summary>
-        /// Gets a list of repositories of the authenticated user.
-        /// </summary>
-        public BitBucketCurrentUserRepositoriesResponse GetRepositories() {
-            return BitBucketCurrentUserRepositoriesResponse.ParseResponse(Raw.GetRepositories());
-        }
+        ///// <summary>
+        ///// Gets a list of repositories of the authenticated user.
+        ///// </summary>
+        //public BitBucketCurrentUserRepositoriesResponse GetRepositories() {
+        //    return BitBucketCurrentUserRepositoriesResponse.ParseResponse(Raw.GetRepositories());
+        //}
 
         #endregion
 

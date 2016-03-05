@@ -1,5 +1,6 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Social.Json.Extensions.JObject;
+using Skybrud.Social.Time;
 
 namespace Skybrud.Social.BitBucket.Objects.Users {
 
@@ -16,34 +17,31 @@ namespace Skybrud.Social.BitBucket.Objects.Users {
         public string Username { get; private set; }
 
         /// <summary>
-        /// Gets the first name of the user.
+        /// Gets the website of the user.
         /// </summary>
-        public string FirstName { get; private set; }
-
-        /// <summary>
-        /// Gets the last name of the user.
-        /// </summary>
-        public string LastName { get; private set; }
+        public string Website { get; private set; }
 
         /// <summary>
         /// Gets the display name of the user.
         /// </summary>
         public string DisplayName { get; private set; }
 
-        /// <summary>
-        /// Gets whether the user is team account.
-        /// </summary>
-        public bool IsTeam { get; private set; }
+        public BitBucketUserLinkCollection Links { get; private set; }
 
         /// <summary>
-        /// Gets the secure Gravatar URL for the user's avatar.
+        /// Gets the timestamp for when the user was created.
         /// </summary>
-        public string Avatar { get; private set; }
+        public SocialDateTime CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets the relative API resource URL for the user.
+        /// Gets the location of the user.
         /// </summary>
-        public string ResourceUri { get; private set; }
+        public string Location { get; private set; }
+
+        /// <summary>
+        /// Gets the type of the user. According to the BitBucket documentation, this will always be <code>user</code>.
+        /// </summary>
+        public string Type { get; private set; }
 
         #endregion
 
@@ -51,12 +49,12 @@ namespace Skybrud.Social.BitBucket.Objects.Users {
 
         private BitBucketUser(JObject obj) : base(obj) {
             Username = obj.GetString("username");
-            FirstName = obj.GetString("first_name");
-            LastName = obj.GetString("last_name");
+            Website = obj.GetString("website");
             DisplayName = obj.GetString("display_name");
-            IsTeam = obj.GetBoolean("is_team");
-            Avatar = obj.GetString("avatar");
-            ResourceUri = obj.GetString("resource_uri");
+            Links = obj.GetObject("links", BitBucketUserLinkCollection.Parse);
+            CreatedOn = obj.GetString("created_on", SocialDateTime.Parse);
+            Location = obj.GetString("location");
+            Type = obj.GetString("type");
         }
 
         #endregion

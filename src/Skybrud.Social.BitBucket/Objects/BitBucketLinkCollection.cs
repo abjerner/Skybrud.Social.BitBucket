@@ -1,10 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Social.BitBucket.Objects {
 
-    public class BitBucketLinkCollection : BitBucketObject {
+    public class BitBucketLinkCollection : BitBucketObject, IEnumerable<BitBucketLink> {
 
         #region Private fields
 
@@ -22,7 +23,7 @@ namespace Skybrud.Social.BitBucket.Objects {
 
         #region Constructors
 
-        private BitBucketLinkCollection(JObject obj) : base(obj) {
+        protected BitBucketLinkCollection(JObject obj) : base(obj) {
             _links = BitBucketLink.ParseMultiple(obj);
         }
 
@@ -37,6 +38,14 @@ namespace Skybrud.Social.BitBucket.Objects {
         public BitBucketLink GetLink(string name) {
             BitBucketLink link;
             return _links.TryGetValue(name, out link) ? link : null;
+        }
+
+        public IEnumerator<BitBucketLink> GetEnumerator() {
+            return _links.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
         }
 
         #endregion

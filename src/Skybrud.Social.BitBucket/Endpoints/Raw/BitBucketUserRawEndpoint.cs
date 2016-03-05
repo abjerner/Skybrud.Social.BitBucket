@@ -28,7 +28,7 @@ namespace Skybrud.Social.BitBucket.Endpoints.Raw {
         /// Gets information about the authenticated user.
         /// </summary>
         public SocialHttpResponse GetInfo() {
-            return Client.DoHttpGetRequest("https://bitbucket.org/api/1.0/user");
+            return Client.DoHttpGetRequest("https://api.bitbucket.org/2.0/user");
         }
 
         /// <summary>

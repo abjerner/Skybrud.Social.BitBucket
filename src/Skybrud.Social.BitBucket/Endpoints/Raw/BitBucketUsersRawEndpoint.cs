@@ -28,8 +28,12 @@ namespace Skybrud.Social.BitBucket.Endpoints.Raw {
         /// Gets information about the user with the specified <code>username</code>.
         /// </summary>
         /// <param name="username">The username of the user.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the response from the BitBucket API.</returns>
+        /// <see>
+        ///     <cref>https://confluence.atlassian.com/bitbucket/users-endpoint-423626336.html#usersEndpoint-GETtheuserprofile</cref>
+        /// </see>
         public SocialHttpResponse GetInfo(string username) {
-            return Client.DoHttpGetRequest("https://bitbucket.org/api/1.0/users/" + username);
+            return Client.DoHttpGetRequest("https://api.bitbucket.org/2.0/users/" + username);
         }
 
         #endregion
