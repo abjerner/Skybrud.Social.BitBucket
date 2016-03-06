@@ -34,9 +34,27 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         /// <summary>
         /// Gets information about the authenticated user.
         /// </summary>
+        /// <returns>Returns an instance of <see cref="BitBucketGetUserResponse"/> representing the response.</returns>
         public BitBucketGetUserResponse GetInfo() {
             return BitBucketGetUserResponse.ParseResponse(Raw.GetInfo());
         }
+
+        /// <summary>
+        /// Gets a list of emails of the authenticated user.
+        /// </summary>
+        /// <returns>Returns an instance of <see cref="BitBucketGetUserEmailsResponse"/> representing the response.</returns>
+        public BitBucketGetUserEmailsResponse GetEmails() {
+            return BitBucketGetUserEmailsResponse.ParseResponse(Raw.GetEmails());
+        }
+
+        /// <summary>
+        /// Gets a list of email addresses of the authenticated user.
+        /// </summary>
+        /// <returns>Returns an instance of <see cref="BitBucketGetUserEmailsResponse"/> representing the raw response.</returns>
+        public BitBucketGetUserEmailsResponse GetEmails(int page, int pageLength) {
+            return BitBucketGetUserEmailsResponse.ParseResponse(Raw.GetEmails(page, pageLength));
+        }
+
 
         ///// <summary>
         ///// Gets a list of repositories of the authenticated user.
