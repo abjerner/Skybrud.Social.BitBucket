@@ -50,6 +50,17 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         /// <summary>
         /// Gets a list of email addresses of the authenticated user.
         /// </summary>
+        /// <param name="page">The page to be returned.</param>
+        /// <returns>Returns an instance of <see cref="BitBucketGetUserEmailsResponse"/> representing the raw response.</returns>
+        public BitBucketGetUserEmailsResponse GetEmails(int page) {
+            return BitBucketGetUserEmailsResponse.ParseResponse(Raw.GetEmails(page));
+        }
+
+        /// <summary>
+        /// Gets a list of email addresses of the authenticated user.
+        /// </summary>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="pageLength">The maximum amount of email addresses to be returned by each page.</param>
         /// <returns>Returns an instance of <see cref="BitBucketGetUserEmailsResponse"/> representing the raw response.</returns>
         public BitBucketGetUserEmailsResponse GetEmails(int page, int pageLength) {
             return BitBucketGetUserEmailsResponse.ParseResponse(Raw.GetEmails(page, pageLength));

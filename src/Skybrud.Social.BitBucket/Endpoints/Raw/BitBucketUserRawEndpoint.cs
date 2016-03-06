@@ -36,19 +36,33 @@ namespace Skybrud.Social.BitBucket.Endpoints.Raw {
         }
 
         /// <summary>
-        /// Gets a list of emails of the authenticated user.
+        /// Gets a list of up to the first <code>10</code> email addresses of the authenticated user.
         /// </summary>
         /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://confluence.atlassian.com/bitbucket/user-endpoint-2-0-744527199.html#userendpoint2.0-GETemailforauser</cref>
         /// </see>
         public SocialHttpResponse GetEmails() {
-            return Client.DoHttpGetRequest("https://api.bitbucket.org/2.0/user/emails");
+            return GetEmails(0, 0);
         }
 
         /// <summary>
         /// Gets a list of email addresses of the authenticated user.
         /// </summary>
+        /// <param name="page">The page to be returned.</param>
+        /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://confluence.atlassian.com/bitbucket/user-endpoint-2-0-744527199.html#userendpoint2.0-GETemailforauser</cref>
+        /// </see>
+        public SocialHttpResponse GetEmails(int page) {
+            return GetEmails(page, 0);
+        }
+
+        /// <summary>
+        /// Gets a list of email addresses of the authenticated user.
+        /// </summary>
+        /// <param name="page">The page to be returned.</param>
+        /// <param name="pageLength">The maximum amount of email addresses to be returned by each page.</param>
         /// <returns>Returns an instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
         /// <see>
         ///     <cref>https://confluence.atlassian.com/bitbucket/user-endpoint-2-0-744527199.html#userendpoint2.0-GETemailforauser</cref>
