@@ -8,7 +8,7 @@ namespace Skybrud.Social.BitBucket.OAuth {
     /// using a three-legged approach as well as logic for calling the methods decribed in the BitBucket API (not all
     /// has been implemented yet).
     /// </summary>
-    public class BitBucketOAuthClient : OAuthClient {
+    public class BitBucketOAuthClient : SocialOAuthClient {
 
         #region Properties
 

@@ -74,7 +74,7 @@ namespace Skybrud.Social.BitBucket {
         /// Initialize a service reference based on the specified OAuth client.
         /// </summary>
         /// <param name="client">The OAuth client.</param>
-        public static BitBucketService CreateFromOAuthClient(OAuthClient client) {
+        public static BitBucketService CreateFromOAuthClient(SocialOAuthClient client) {
             if (client == null) throw new ArgumentNullException("client");
             return CreateFromAccessToken(client.ConsumerKey, client.ConsumerSecret, client.Token, client.TokenSecret);
         }

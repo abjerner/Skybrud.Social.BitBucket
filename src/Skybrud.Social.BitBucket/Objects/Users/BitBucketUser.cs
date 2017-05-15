@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.Json.Extensions.JObject;
-using Skybrud.Social.Time;
+using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Social.BitBucket.Objects.Users {
 
@@ -31,7 +31,7 @@ namespace Skybrud.Social.BitBucket.Objects.Users {
         /// <summary>
         /// Gets the timestamp for when the user was created.
         /// </summary>
-        public SocialDateTime CreatedOn { get; private set; }
+        public EssentialsDateTime CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets the location of the user.
@@ -52,7 +52,7 @@ namespace Skybrud.Social.BitBucket.Objects.Users {
             Website = obj.GetString("website");
             DisplayName = obj.GetString("display_name");
             Links = obj.GetObject("links", BitBucketUserLinkCollection.Parse);
-            CreatedOn = obj.GetString("created_on", SocialDateTime.Parse);
+            CreatedOn = obj.GetString("created_on", EssentialsDateTime.Parse);
             Location = obj.GetString("location");
             Type = obj.GetString("type");
         }

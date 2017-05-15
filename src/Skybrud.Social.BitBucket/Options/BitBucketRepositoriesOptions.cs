@@ -1,9 +1,9 @@
 ﻿using Skybrud.Social.Http;
-using Skybrud.Social.Interfaces;
+using Skybrud.Social.Interfaces.Http;
 
 namespace Skybrud.Social.BitBucket.Options {
     
-    public class BitBucketRepositoriesOptions : IGetOptions {
+    public class BitBucketRepositoriesOptions : IHttpGetOptions {
 
         #region Properties
 
@@ -22,8 +22,8 @@ namespace Skybrud.Social.BitBucket.Options {
 
         #region Member methods
 
-        public SocialQueryString GetQueryString() {
-            SocialQueryString qs = new SocialQueryString();
+        public IHttpQueryString GetQueryString() {
+            SocialHttpQueryString qs = new SocialHttpQueryString();
             if (Page > 0) qs.Add("page", Page);
             if (PageLength > 0) qs.Add("pagelen", PageLength);
             return qs;

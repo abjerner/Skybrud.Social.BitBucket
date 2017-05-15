@@ -68,7 +68,7 @@ namespace Skybrud.Social.BitBucket.Endpoints.Raw {
         ///     <cref>https://confluence.atlassian.com/bitbucket/user-endpoint-2-0-744527199.html#userendpoint2.0-GETemailforauser</cref>
         /// </see>
         public SocialHttpResponse GetEmails(int page, int pageLength) {
-            SocialQueryString query = new SocialQueryString();
+            SocialHttpQueryString query = new SocialHttpQueryString();
             if (page > 0) query.Add("page", page);
             if (pageLength > 0) query.Add("pagelen", pageLength);
             return Client.DoHttpGetRequest("https://api.bitbucket.org/2.0/user/emails", query);
