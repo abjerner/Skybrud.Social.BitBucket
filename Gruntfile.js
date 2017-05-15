@@ -25,6 +25,8 @@ module.exports = function (grunt) {
 		            return path.basename(filepath);
 		        },
 		        src: [
+					'src/' + pkg.name + '/bin/Release/Skybrud.Essentials.dll',
+					'src/' + pkg.name + '/bin/Release/Skybrud.Essentials.xml',
 					'src/' + pkg.name + '/bin/Release/Skybrud.Social.Core.dll',
 					'src/' + pkg.name + '/bin/Release/Skybrud.Social.Core.xml',
 					'src/' + pkg.name + '/bin/Release/' + pkg.name + '.dll',
