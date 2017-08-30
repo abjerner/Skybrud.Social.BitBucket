@@ -14,6 +14,11 @@ namespace Skybrud.Social.BitBucket.OAuth {
         #region Properties
 
         /// <summary>
+        /// Gets a reference to the raw branches endpoint.
+        /// </summary>
+        public BitBucketBranchesRawEndpoint Branches { get; private set; }
+
+        /// <summary>
         /// Gets a reference to the raw user endpoint.
         /// </summary>
         public BitBucketUserRawEndpoint User { get; private set; }
@@ -53,6 +58,7 @@ namespace Skybrud.Social.BitBucket.OAuth {
             AccessTokenUrl = "https://bitbucket.org/api/1.0/oauth/access_token";
 
             // Endpoints
+            Branches = new BitBucketBranchesRawEndpoint(this);
             User = new BitBucketUserRawEndpoint(this);
             Users = new BitBucketUsersRawEndpoint(this);
             Repositories = new BitBucketRepositoriesRawEndpoint(this);

@@ -15,6 +15,11 @@ namespace Skybrud.Social.BitBucket {
         public BitBucketOAuthClient Client { get; private set; }
 
         /// <summary>
+        /// Gets a reference to the branches endpoint.
+        /// </summary>
+        public BitBucketBranchesEndpoint Branches { get; private set; }
+
+        /// <summary>
         /// Gets a reference to the user endpoint.
         /// </summary>
         public BitBucketUserEndpoint User { get; private set; }
@@ -34,6 +39,7 @@ namespace Skybrud.Social.BitBucket {
         #region Constructors
 
         private BitBucketService() {
+            Branches = new BitBucketBranchesEndpoint(this);
             User = new BitBucketUserEndpoint(this);
             Users = new BitBucketUsersEndpoint(this);
             Repositories = new BitBucketRepositoriesEndpoint(this);

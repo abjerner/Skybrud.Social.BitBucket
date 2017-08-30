@@ -53,13 +53,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitBucketService.cs" />
+    <Compile Include="Endpoints\BitBucketBranchesEndpoint.cs" />
     <Compile Include="Endpoints\BitBucketRepositoriesEndpoint.cs" />
     <Compile Include="Endpoints\BitBucketUserEndpoint.cs" />
     <Compile Include="Endpoints\BitBucketUsersEndpoint.cs" />
     <Compile Include="Endpoints\Raw\BitBucketRepositoriesRawEndpoint.cs" />
+    <Compile Include="Endpoints\Raw\BitBucketBranchesRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\BitBucketUserRawEndpoint.cs" />
     <Compile Include="Endpoints\Raw\BitBucketUsersRawEndpoint.cs" />
     <Compile Include="Exceptions\BitBucketException.cs" />
+    <Compile Include="Models\Branches\BitBucketBranch.cs" />
+    <Compile Include="Models\Branches\BitBucketBranchLinkCollection.cs" />
+    <Compile Include="Models\Branches\BitBucketBranchesCollection.cs" />
     <Compile Include="OAuth\BitBucketOAuthClient.cs" />
     <Compile Include="Models\BitBucketAuthor.cs" />
     <Compile Include="Models\BitBucketAuthorUser.cs" />
@@ -79,10 +84,13 @@
     <Compile Include="Models\Users\BitBucketUserLinkCollection.cs" />
     <Compile Include="Options\BitBucketCommitsOptions.cs" />
     <Compile Include="Options\BitBucketRepositoriesOptions.cs" />
+    <Compile Include="Options\Branches\BitBucketGetBranchesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />
     <Compile Include="Responses\BitBucketChangesetsResponse.cs" />
     <Compile Include="Responses\BitBucketResponse.cs" />
+    <Compile Include="Responses\Branches\BitBucketGetBranchResponse.cs" />
+    <Compile Include="Responses\Branches\BitBucketGetBranchesResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketCommitsResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketRepositoriesResponse.cs" />
     <Compile Include="Responses\Users\BitBucketGetUserEmailsResponse.cs" />
