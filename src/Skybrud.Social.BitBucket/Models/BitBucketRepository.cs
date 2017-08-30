@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.BitBucket.Objects {
+namespace Skybrud.Social.BitBucket.Models {
 
     public class BitBucketRepository : BitBucketObject {
 

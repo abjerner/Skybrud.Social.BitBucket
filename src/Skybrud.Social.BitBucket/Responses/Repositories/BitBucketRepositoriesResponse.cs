@@ -1,4 +1,4 @@
-﻿using Skybrud.Social.BitBucket.Objects.Repositories;
+﻿using Skybrud.Social.BitBucket.Models.Repositories;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Responses.Repositories {

@@ -1,6 +1,6 @@
 using Skybrud.Essentials.Json;
 using Skybrud.Social.BitBucket.Endpoints.Raw;
-using Skybrud.Social.BitBucket.Objects;
+using Skybrud.Social.BitBucket.Models;
 using Skybrud.Social.BitBucket.Options;
 using Skybrud.Social.BitBucket.Responses;
 using Skybrud.Social.BitBucket.Responses.Repositories;

@@ -1,6 +1,5 @@
-﻿using Skybrud.Social.BitBucket.Objects.Repositories;
-using Skybrud.Social.Http;
-using BitBucketCommitsCollection = Skybrud.Social.BitBucket.Objects.Repositories.BitBucketCommitsCollection;
+﻿using Skybrud.Social.Http;
+using BitBucketCommitsCollection = Skybrud.Social.BitBucket.Models.Repositories.BitBucketCommitsCollection;
 
 namespace Skybrud.Social.BitBucket.Responses.Repositories {
     

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
-namespace Skybrud.Social.BitBucket.Objects.Changesets {
+namespace Skybrud.Social.BitBucket.Models.Changesets {
     
     public class BitBucketChangesetsCollection : BitBucketObject {
         

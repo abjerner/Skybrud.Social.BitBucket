@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Skybrud.Social.BitBucket.Objects {
+namespace Skybrud.Social.BitBucket.Models {
 
     /// <summary>
     /// Class representing a basic object from the BitBucket API derived from an instance of <code>JObject</code>.

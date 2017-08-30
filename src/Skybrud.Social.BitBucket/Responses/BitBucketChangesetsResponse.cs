@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
-using Skybrud.Social.BitBucket.Objects;
-using Skybrud.Social.BitBucket.Objects.Changesets;
+using Skybrud.Social.BitBucket.Models;
+using Skybrud.Social.BitBucket.Models.Changesets;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Responses {

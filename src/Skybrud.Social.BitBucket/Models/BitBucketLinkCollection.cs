@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Skybrud.Social.BitBucket.Objects {
+namespace Skybrud.Social.BitBucket.Models {
 
     public class BitBucketLinkCollection : BitBucketObject, IEnumerable<BitBucketLink> {
 

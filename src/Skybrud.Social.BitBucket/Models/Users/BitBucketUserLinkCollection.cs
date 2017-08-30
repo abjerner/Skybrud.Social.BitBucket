@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Skybrud.Social.BitBucket.Objects.Users {
+namespace Skybrud.Social.BitBucket.Models.Users {
 
     /// <summary>
     /// Class representing the <code>links</code> object/collection of a BitBucket user.

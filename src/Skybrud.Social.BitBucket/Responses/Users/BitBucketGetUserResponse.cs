@@ -1,5 +1,5 @@
 ﻿using System;
-using Skybrud.Social.BitBucket.Objects.Users;
+using Skybrud.Social.BitBucket.Models.Users;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Responses.Users {
