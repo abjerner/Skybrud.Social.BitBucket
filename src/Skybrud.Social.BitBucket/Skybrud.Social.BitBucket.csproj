@@ -91,7 +91,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\AssemblyInfo.json" />
-    <None Include="Skybrud.Social.Facebook.nuspec" />
+    <None Include="Skybrud.Social.BitBucket.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE.txt" />
