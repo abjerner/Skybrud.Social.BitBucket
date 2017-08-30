@@ -70,7 +70,7 @@ namespace Skybrud.Social.BitBucket.OAuth {
         protected override void PrepareHttpRequest(SocialHttpRequest request) {
 
             // Append the protocol and domain if not already included in the URL
-            if (request.Url.StartsWith("/")) request.Url += "https://api.bitbucket.org";
+            if (request.Url.StartsWith("/")) request.Url = "https://api.bitbucket.org" + request.Url;
 
             // Call the base method for running all the OAuth logic
             base.PrepareHttpRequest(request);
