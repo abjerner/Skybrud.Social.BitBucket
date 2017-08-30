@@ -1,4 +1,5 @@
 using Skybrud.Social.BitBucket.Endpoints.Raw;
+using Skybrud.Social.Http;
 using Skybrud.Social.OAuth;
 
 namespace Skybrud.Social.BitBucket.OAuth {
@@ -55,6 +56,21 @@ namespace Skybrud.Social.BitBucket.OAuth {
             User = new BitBucketUserRawEndpoint(this);
             Users = new BitBucketUsersRawEndpoint(this);
             Repositories = new BitBucketRepositoriesRawEndpoint(this);
+
+        }
+
+        #endregion
+
+        #region Member methods
+
+        /// <summary>
+        /// Method responsible for updating the request with information specific to the BitBucket implementation.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        protected override void PrepareHttpRequest(SocialHttpRequest request) {
+
+            // Append the protocol and domain if not already included in the URL
+            if (request.Url.StartsWith("/")) request.Url += "https://api.bitbucket.org";
 
         }
 
