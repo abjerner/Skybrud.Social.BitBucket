@@ -1,9 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace Skybrud.Social.BitBucket.Models.Repositories {
     
-    public class BitBucketRepositoriesCollection : BitBucketObject {
+    /// <summary>
+    /// Class representing a collection of BitBucket repositories.
+    /// </summary>
+    public class BitBucketRepositoriesCollection : BitBucketObject, IEnumerable<BitBucketRepository> {
 
         #region Properties
 
@@ -40,12 +45,33 @@ namespace Skybrud.Social.BitBucket.Models.Repositories {
 
         #endregion
 
+        #region Member methods
+
+        /// <summary>
+        /// Gets a reference to a enumerator for the repositories in the collection.
+        /// </summary>
+        /// <returns>An instance of <see cref="IEnumerator{BitBucketRepository}"/>.</returns>
+        public IEnumerator<BitBucketRepository> GetEnumerator() {
+            return ((IEnumerable<BitBucketRepository>) Values).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
+        }
+
+        #endregion
+
         #region Static methods
 
+        /// <summary>
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="BitBucketRepositoriesCollection"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <returns>An instance of <see cref="BitBucketRepositoriesCollection"/>.</returns>
         public static BitBucketRepositoriesCollection Parse(JObject obj) {
             return obj == null ? null : new BitBucketRepositoriesCollection(obj);
         }
-
+        
         #endregion
 
     }

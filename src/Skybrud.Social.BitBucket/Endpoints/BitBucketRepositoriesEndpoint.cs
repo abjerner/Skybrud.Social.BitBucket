@@ -2,6 +2,7 @@ using Skybrud.Essentials.Json;
 using Skybrud.Social.BitBucket.Endpoints.Raw;
 using Skybrud.Social.BitBucket.Models;
 using Skybrud.Social.BitBucket.Options;
+using Skybrud.Social.BitBucket.Options.Repositories;
 using Skybrud.Social.BitBucket.Responses;
 using Skybrud.Social.BitBucket.Responses.Repositories;
 
@@ -96,20 +97,21 @@ namespace Skybrud.Social.BitBucket.Endpoints {
         }
 
         /// <summary>
-        /// Gets a list of repositories of the with the specified <code>username</code>.
+        /// Gets a list of repositories of the user with the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username of the user.</param>
-        public BitBucketRepositoriesResponse GetRepositories(string username) {
-            return BitBucketRepositoriesResponse.ParseResponse(Raw.GetRepositories(username));
+        /// <returns>An instance of <see cref="BitBucketGetRepositoriesResponse"/> representing the response.</returns>
+        public BitBucketGetRepositoriesResponse GetRepositories(string username) {
+            return BitBucketGetRepositoriesResponse.ParseResponse(Raw.GetRepositories(username));
         }
 
         /// <summary>
-        /// Gets a list of repositories of the with the specified <code>username</code>.
+        /// Gets a list of repositories of the user matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="username">The username of the user.</param>
         /// <param name="options">The options for the call to the API.</param>
-        public BitBucketRepositoriesResponse GetRepositories(string username, BitBucketRepositoriesOptions options) {
-            return BitBucketRepositoriesResponse.ParseResponse(Raw.GetRepositories(username, options));
+        /// <returns>An instance of <see cref="BitBucketGetRepositoriesResponse"/> representing the response.</returns>
+        public BitBucketGetRepositoriesResponse GetRepositories(BitBucketGetRepositoriesOptions options) {
+            return BitBucketGetRepositoriesResponse.ParseResponse(Raw.GetRepositories(options));
         }
 
         #endregion

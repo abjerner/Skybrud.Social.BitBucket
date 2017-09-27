@@ -65,6 +65,9 @@
     <Compile Include="Models\Branches\BitBucketBranch.cs" />
     <Compile Include="Models\Branches\BitBucketBranchLinkCollection.cs" />
     <Compile Include="Models\Branches\BitBucketBranchesCollection.cs" />
+    <Compile Include="Models\Common\BitBucketSortOrder.cs" />
+    <Compile Include="Models\Repositories\BitBucketRepositoryField.cs" />
+    <Compile Include="Models\Repositories\BitBucketRepositoryOwner.cs" />
     <Compile Include="OAuth\BitBucketOAuthClient.cs" />
     <Compile Include="Models\BitBucketAuthor.cs" />
     <Compile Include="Models\BitBucketAuthorUser.cs" />
@@ -73,7 +76,7 @@
     <Compile Include="Models\BitBucketLink.cs" />
     <Compile Include="Models\BitBucketLinkCollection.cs" />
     <Compile Include="Models\BitBucketObject.cs" />
-    <Compile Include="Models\BitBucketRepository.cs" />
+    <Compile Include="Models\Repositories\BitBucketRepository.cs" />
     <Compile Include="Models\BitBucketRepositoryInfo.cs" />
     <Compile Include="Models\Users\BitBucketUser.cs" />
     <Compile Include="Models\Changesets\BitBucketChangesetsCollection.cs" />
@@ -83,7 +86,7 @@
     <Compile Include="Models\Users\BitBucketUserEmailsCollection.cs" />
     <Compile Include="Models\Users\BitBucketUserLinkCollection.cs" />
     <Compile Include="Options\BitBucketCommitsOptions.cs" />
-    <Compile Include="Options\BitBucketRepositoriesOptions.cs" />
+    <Compile Include="Options\Repositories\BitBucketGetRepositoriesOptions.cs" />
     <Compile Include="Options\Branches\BitBucketGetBranchesOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoGenerated.cs" />
@@ -92,7 +95,7 @@
     <Compile Include="Responses\Branches\BitBucketGetBranchResponse.cs" />
     <Compile Include="Responses\Branches\BitBucketGetBranchesResponse.cs" />
     <Compile Include="Responses\Repositories\BitBucketCommitsResponse.cs" />
-    <Compile Include="Responses\Repositories\BitBucketRepositoriesResponse.cs" />
+    <Compile Include="Responses\Repositories\BitBucketGetRepositoriesResponse.cs" />
     <Compile Include="Responses\Users\BitBucketGetUserEmailsResponse.cs" />
     <Compile Include="Responses\Users\BitBucketGetUserResponse.cs" />
   </ItemGroup>

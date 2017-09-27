@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Specialized;
+using Skybrud.Essentials.Common;
 using Skybrud.Social.BitBucket.OAuth;
 using Skybrud.Social.BitBucket.Options;
+using Skybrud.Social.BitBucket.Options.Repositories;
 using Skybrud.Social.Http;
 
 namespace Skybrud.Social.BitBucket.Endpoints.Raw {
@@ -89,20 +91,30 @@ namespace Skybrud.Social.BitBucket.Endpoints.Raw {
         }
 
         /// <summary>
-        /// Gets a list of repositories of the user with the specified <code>username</code>.
+        /// Gets a list of repositories of the user with the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username of the user.</param>
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Busername%7D</cref>
+        /// </see>
         public SocialHttpResponse GetRepositories(string username) {
-            return GetRepositories(username, null);
+            if (String.IsNullOrWhiteSpace(username)) throw new ArgumentNullException(nameof(username));
+            return GetRepositories(new BitBucketGetRepositoriesOptions(username));
         }
 
         /// <summary>
-        /// Gets a list of repositories of the user with the specified <code>username</code>.
+        /// Gets a list of repositories of the user matching the specified <paramref name="options"/>.
         /// </summary>
-        /// <param name="username">The username of the user.</param>
         /// <param name="options">The options for the call to the API.</param>
-        public SocialHttpResponse GetRepositories(string username, BitBucketRepositoriesOptions options) {
-            return Client.DoHttpGetRequest("https://bitbucket.org/api/2.0/repositories/" + username, options);
+        /// <returns>An instance of <see cref="SocialHttpResponse"/> representing the raw response.</returns>
+        /// <see>
+        ///     <cref>https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Busername%7D</cref>
+        /// </see>
+        public SocialHttpResponse GetRepositories(BitBucketGetRepositoriesOptions options) {
+            if (options == null) throw new ArgumentNullException(nameof(options));
+            if (String.IsNullOrWhiteSpace(options.Username)) throw new PropertyNotSetException(nameof(options.Username));
+            return Client.DoHttpGetRequest("https://bitbucket.org/api/2.0/repositories/" + options.Username, options);
         }
 
         #endregion
