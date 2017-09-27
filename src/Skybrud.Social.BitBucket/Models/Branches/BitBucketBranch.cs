@@ -11,7 +11,7 @@ namespace Skybrud.Social.BitBucket.Models.Branches {
         #region Properties
 
         /// <summary>
-        /// Gets the type of the branch/object. Proably always returns <code>branch</code>.
+        /// Gets the type of the branch/object. Probably always returns <code>branch</code>.
         /// </summary>
         public string Type { get; private set; }
 
